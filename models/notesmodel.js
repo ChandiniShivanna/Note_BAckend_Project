@@ -1,11 +1,13 @@
-const mongoose = require('mongoose');
-const ObjectId= require('mongoose').ObjectId;
+const mongoose = require("mongoose")
+const {model, Schema} = mongoose;
+const objectId = require("mongoose").ObjectId;
 
-const notesmodel=new mongoose.Schema({
-    title:{type : String ,required:true},
-    description:{type:String,required:true},
-    userId:{type:ObjectId,ref:"users"}
-},{timestamps:true})
+const postSchema = Schema({
+    title:{type:String, required:true},
+    description:{type:String, required:true},
+    userId : {type:objectId, ref:"users"}
+}, {timestamps:true})
 
-const notes =mongoose.model("notes", notesmodel);
-module.exports=notes;
+const postModels = model("notes", postSchema)
+
+module.exports = postModels;
