@@ -5,6 +5,7 @@ const app= express();
 
 const RegistrationRoute= require('./routes/registerRouter');
 const LoginRoute=require('./routes/loginRoutes')
+const notesroutes=require("./routes/notes")
 // const 
 const Authentication=require('./middleware/autherization')
 
@@ -16,7 +17,7 @@ app.use(bodyparser.urlencoded({extended:false}));
 
 app.use('/',RegistrationRoute);
 app.use('/',LoginRoute);
-// app.use('/',Authentication,notes);
+app.use('/',Authentication,notesroutes);
 
 app.get('/',(req,res)=>{
     res.status(200).json({
